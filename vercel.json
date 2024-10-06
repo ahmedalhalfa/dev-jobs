@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://6702ad9dbd7c8c1ccd3f8b8d.mockapi.io/api/v1/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
