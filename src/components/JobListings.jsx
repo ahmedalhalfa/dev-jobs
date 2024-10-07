@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import Joblisting from './Joblisting';
 import { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 
-const jobListings = ({ isHome = false }) => {
+const JobListings = ({ isHome = false }) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch(`/api/jobs?${isHome ? 'limit=3&page-1' : ''}`);
+        const response = await fetch(`/api/jobs?${isHome ? 'limit=3&page=1' : ''}`);
         const data = await response.json();
         setJobs(data);
       } catch (error) {
@@ -39,4 +40,8 @@ const jobListings = ({ isHome = false }) => {
   );
 };
 
-export default jobListings;
+JobListings.propTypes = {
+  isHome: PropTypes.bool,
+};
+
+export default JobListings;
